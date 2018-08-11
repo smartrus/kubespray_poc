@@ -1,6 +1,6 @@
 # Kubespray installation steps on Ubuntu
 
-Installing OS updates and ansible
+Installing OS updates, ansible and python
 
 ```
 sudo apt-get update
@@ -8,6 +8,10 @@ sudo apt-get install software-properties-common -y
 sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get update
 sudo apt-get install ansible -y
+
+sudo apt-get install python-pip
+pip2 install jinja2
+sudo apt-get install python-netaddr
 ```
 
 Configuring ansible technical user
