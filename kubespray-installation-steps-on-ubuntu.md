@@ -48,6 +48,10 @@ CONFIG_FILE=inventory/mycluster/hosts.ini python3 contrib/inventory_builder/inve
 
 pip install ansible-modules-hashivault
 
+vi inventory/mycluster/group_vars/all.yml
+# Uncomment this if you have more than 3 nameservers, then we'll only use the first 3.
+docker_dns_servers_strict: false
+
 ansible-playbook -i inventory/mycluster/hosts.ini cluster.yml -b -v \
   --private-key=~/.ssh/id_rsa
 ```
