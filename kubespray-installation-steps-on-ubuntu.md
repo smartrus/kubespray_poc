@@ -9,9 +9,9 @@ sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get update
 sudo apt-get install ansible -y
 
-sudo apt-get install python-pip
+sudo apt-get install python-pip -y
 pip2 install jinja2
-sudo apt-get install python-netaddr
+sudo apt-get install python-netaddr -y
 ```
 
 Configuring ansible technical user
