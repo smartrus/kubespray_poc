@@ -14,7 +14,7 @@ sudo pip2 install jinja2
 sudo apt-get install python-netaddr -y
 ```
 
-Configuring ansible technical user
+Configuring an ansible technical user
 
 ```
 useradd -m -s /bin/bash kubeadmin
@@ -46,7 +46,11 @@ cp -rfp inventory/sample inventory/mycluster
 declare -a IPS=(195.201.37.52 195.201.126.6)
 CONFIG_FILE=inventory/mycluster/hosts.ini python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 
-sudo pip install ansible-modules-hashivault
+# ignore all warnings
+pip install ansible-modules-hashivault
+
+# configure hosts
+vi inventory/mycluster/hosts.ini
 
 vi inventory/mycluster/group_vars/all.yml
 # Uncomment this if you have more than 3 nameservers, then we'll only use the first 3.
@@ -54,4 +58,10 @@ docker_dns_servers_strict: false
 
 ansible-playbook -i inventory/mycluster/hosts.ini cluster.yml -b -v \
   --private-key=~/.ssh/id_rsa
+```
+
+Resetting a cluster
+
+```
+sudo ansible-playbook -i inventory/staging/hosts.ini -b --become-user=root reset.yml
 ```
