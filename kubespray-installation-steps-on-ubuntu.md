@@ -10,7 +10,7 @@ sudo apt-get update
 sudo apt-get install ansible -y
 
 sudo apt-get install python-pip -y
-pip2 install jinja2
+sudo pip2 install jinja2
 sudo apt-get install python-netaddr -y
 ```
 
@@ -46,7 +46,7 @@ cp -rfp inventory/sample inventory/mycluster
 declare -a IPS=(195.201.37.52 195.201.126.6)
 CONFIG_FILE=inventory/mycluster/hosts.ini python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 
-pip install ansible-modules-hashivault
+sudo pip install ansible-modules-hashivault
 
 vi inventory/mycluster/group_vars/all.yml
 # Uncomment this if you have more than 3 nameservers, then we'll only use the first 3.
